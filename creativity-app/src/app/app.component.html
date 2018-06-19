@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col s12">
+        <span style="margin-left: 600px">BRMS</span>
+    </div>
+</div>
+<div class="card-panel hand" style="margin: 20px" *ngIf="isGridVisible">
+    <div class="row">
+        <div class="col s12">
+            <div style="height: 100px;">
+                <div class="col s3" style="background-color: bisque;height: 50px;text-align: center;padding-top: 15px">
+                    <span>Charge</span>
+                </div>
+                <div class="col s3" style="background-color: bisque;height: 50px;text-align: center;padding-top: 15px">
+                    <span [matMenuTriggerFor]="rateOptions">Rate</span>
+                    <mat-menu #rateOptions="matMenu" overlapTrigger="false">
+                        <button mat-menu-item>Accept</button>
+                        <button mat-menu-item>Reject</button>
+                    </mat-menu>
+                </div>
+                <div class="col s3" style="background-color: bisque;height: 50px;text-align: center;padding-top: 15px">
+                    <span [matMenuTriggerFor]="adminOptions">Admin</span>
+                    <mat-menu #adminOptions="matMenu" overlapTrigger="false">
+                        <button mat-menu-item (click)="onFilterMenuSelection()">Manage App</button>
+                        <button mat-menu-item>Manage Regions</button>
+                        <button mat-menu-item>Manage Products</button>
+                    </mat-menu>
+                </div>
+                <div class="col s3" style="background-color: bisque;height: 50px;text-align: center;padding-top: 15px">
+                    <span>Help</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="showGrid">
+        <div class="row card-panel">
+            <div>
+                <div class="col s12">
+                    <table>
+                        <tr *ngFor="let row of data;let i=index" class="txt-size" [ngClass]="{'row-highlight': row.selected}" (click)="onRowSelection(i,row)">
+                            <td class="centertxt">
+                                <span>{{row.name}}</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col s12" style="margin-top: 10px;">
+                    <div style="float: right;">
+                        <a class="waves-effect waves-light btn mr-1 sizingg1" (click)="onNew()">New</a>
+                        <a class="waves-effect waves-light btn mr-1 sizingg1" (click)="onEdit()">Edit</a>
+                        <a class="waves-effect waves-light btn  mr-1 sizingg1" (click)="onDelete()">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="login_frm" *ngIf="!isGridVisible">
+    <div class="card-panel">
+        <h5 id="signinheader">Create new one</h5>
+        <div class="row">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="name">Name</label>
+                        <input id="name" name="name" type="text" [(ngModel)]="name">
+                    </div>
+                    <div class="input-field col s12">
+                        <label for="formula">Formula</label>
+                        <input id="formula" type="text" name="formula" [(ngModel)]="formula">
+                    </div>
+                    <div class="col s12">
+                        <div style="float: right;">
+                            <a class="waves-effect waves-light btn mr-1 sizingg1">Validate</a>
+                            <a class="waves-effect waves-light btn mr-1 sizingg1" (click)="onSave()">Save</a>
+                            <a class="waves-effect waves-light btn  mr-1 sizingg1">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

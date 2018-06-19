@@ -1,0 +1,19 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "expressserver.js",
+  "dependencies": {
+    "angular": "^1.7.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mysql": "^2.15.0",
+    "nodemailer": "^4.6.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "baji",
+  "license": "ISC"
+}
